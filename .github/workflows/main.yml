@@ -15,5 +15,11 @@ jobs:
           node-version: '18.x'
       - name: Install dependencies
         run: npm install
-      - name: Build and deploy
-        run: npm run deploy
+      - name: Build project
+        run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: public
