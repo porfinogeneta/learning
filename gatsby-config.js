@@ -1,8 +1,10 @@
-// const dotenv = require('dotenv')
+const dotenv = require('dotenv')
 
-// if (process.env.NODE_ENV !== 'production'){
-//   dotenv.config();
-// }
+if (process.env.NODE_ENV !== 'production'){
+  dotenv.config({
+    path: `.env.${process.env.NODE_ENV}`,
+  });
+}
 
 module.exports = {
   plugins: [
@@ -10,7 +12,6 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `468g1do0xbjq`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
       },
     },
